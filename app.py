@@ -58,9 +58,9 @@ def process_file(file_bytes):
 
         if target_col is not None:
             insert_pos = df.columns.get_loc(target_col)
-            df.insert(insert_pos, 'media pe semestru', avg_trunc)
+            df.insert(insert_pos, 'Средний балл отметка', avg_trunc)
         else:
-            df['media pe semestru'] = avg_trunc
+            df['Средний балл отметка'] = avg_trunc
 
         sheets[sheet_name] = df
 
@@ -72,7 +72,7 @@ def process_file(file_bytes):
     return output.getvalue()
 
 uploaded_file = st.file_uploader(
-    "📂 Încărcați fișierul Excel (.xlsx)",
+    "📂 Загрузите журнал по предмету в формате Excel (.xlsx)",
     type=["xlsx"]
 )
 
@@ -82,11 +82,11 @@ if uploaded_file:
 
         st.success("Fișierul a fost procesat cu succes.")
         st.download_button(
-            label="⬇️ Descărcați fișierul rezultat",
+            label="⬇️ Скачайте готовый результат",
             data=result_bytes,
             file_name=f"result_{uploaded_file.name}",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     except Exception as e:
-        st.error("Eroare la procesarea fișierului. Verificați structura jurnalului.")
+        st.error("Ошибка при обработке файла. Проверьте структуру журнала.")
         st.exception(e)
