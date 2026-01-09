@@ -80,7 +80,7 @@ if uploaded_file:
     try:
         result_bytes = process_file(uploaded_file.read())
 
-        st.success("Fișierul a fost procesat cu succes.")
+        st.success("Фаил был успешно обработан")
         st.download_button(
             label="⬇️ Скачайте готовый результат",
             data=result_bytes,
